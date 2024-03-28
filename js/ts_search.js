@@ -25,21 +25,12 @@ const search = instantsearch({
   indexName: project_collection_name,
 });
 
-function isNumeric(value) {
-    return /^-?\d+$/.test(value);
-}
-
 function formatDate(timestamp) {
-	if (isNumeric(timestamp)) {
 	var date = new Date(timestamp * 1000)
 	let year = date.getFullYear()
-	let month  = date.getMonth() + 1
-	let day = date.getDay() + 1
-	date = day + "-" + month + "-" + year ;
-	} else
-	{
-		date = timestamp }
-  return date
+	let month  = date.getMonth()
+	let day = date.getDay()
+  return day + "-" + month + "-" + year
 }
 
 search.addWidgets([
@@ -148,7 +139,6 @@ search.addWidgets([
     cssClasses: {
       delete: "btn",
       label: "badge",
-      // formatDate here somehow?
     },
   }),
 
